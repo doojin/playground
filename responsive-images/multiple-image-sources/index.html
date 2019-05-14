@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Responsive images</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+    <img srcset="assets/cat-320.jpg 320w,
+                     assets/cat-640.jpg 640w,
+                     assets/cat-1024.jpg 1024w"
+         sizes="(max-width: 320px) 100px,
+                    (max-width: 640px) 300px,
+                    800px"
+         alt="Beautiful cat"
+         src="assets/cat-1024.jpg"/>
+</body>
+</html>
