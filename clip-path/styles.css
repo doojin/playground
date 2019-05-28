@@ -1,0 +1,11 @@
+.content {
+  margin-top: 2rem;
+}
+
+.figure {
+  background: url('./tony.jpg') no-repeat center center;
+  background-size: cover;
+  display: inline-block;
+  height: 200px;
+  width: 290px;
+}
