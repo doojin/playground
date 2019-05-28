@@ -21,3 +21,7 @@
 .example3 {
   clip-path: ellipse(100px 75px at 100px 70px);
 }
+
+.example4 {
+  clip-path: polygon(20px 30px, 210px 50px, 150px 80px, 240px 120px, 40px 180px);
+}
