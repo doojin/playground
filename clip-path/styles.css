@@ -11,7 +11,7 @@
 }
 
 .example1 {
-  clip-path: inset(60px 20px);
+  clip-path: inset(60px 20px round 20px);
 }
 
 .example2 {
