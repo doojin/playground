@@ -17,3 +17,7 @@
 .example2 {
   clip-path: circle(75px at 100px 100px);
 }
+
+.example3 {
+  clip-path: ellipse(100px 75px at 100px 70px);
+}
