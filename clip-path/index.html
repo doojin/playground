@@ -47,7 +47,6 @@
            </div>
        </div>
 
-
        <div class="ui card">
            <div class="image">
                <div class="figure example4"></div>
@@ -56,6 +55,27 @@
                <span class="header">
                    clip-path: polygon(20px 30px, 210px 50px, 150px 80px, 240px 120px, 40px 180px);
                </span>
+           </div>
+       </div>
+
+       <div class="ui card">
+           <svg height="0">
+               <defs>
+                   <clipPath id="heart" clipPathUnits="objectBoundingBox">
+                       <path d="M0.5,1
+                  C 0.5,1,0,0.7,0,0.3
+                  A 0.25,0.25,1,1,1,0.5,0.3
+                  A 0.25,0.25,1,1,1,1,0.3
+                  C 1,0.7,0.5,1,0.5,1 Z"/>
+                   </clipPath>
+               </defs>
+           </svg>
+
+           <div class="image">
+               <div class="figure example5"></div>
+           </div>
+           <div class="content">
+               <span class="header">clip-path: url(#heart);</span>
            </div>
        </div>
 
