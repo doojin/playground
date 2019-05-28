@@ -13,3 +13,7 @@
 .example1 {
   clip-path: inset(60px 20px);
 }
+
+.example2 {
+  clip-path: circle(75px at 100px 100px);
+}
