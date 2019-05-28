@@ -9,3 +9,7 @@
   height: 200px;
   width: 290px;
 }
+
+.example1 {
+  clip-path: inset(60px 20px);
+}
