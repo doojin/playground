@@ -1,16 +1,19 @@
 {
-  "name": "await-timeout",
+  "name": "await-timeout-examples",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js"
+    "dev": "webpack --config webpack.config.js --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "await-timeout": "^0.5.0"
   }
 }
