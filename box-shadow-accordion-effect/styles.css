@@ -4,9 +4,11 @@ body {
 
 .card {
   background-color: #fff;
-  border: solid 4px #777;
+  border: solid 4px #555;
   margin: calc(50vh - 100px) auto 0 auto;
   padding: .5rem 1rem;
   text-align: center;
   width: 300px;
+
+  box-shadow: 10px -10px 0 0 #777;
 }
