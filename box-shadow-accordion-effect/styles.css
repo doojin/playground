@@ -1,0 +1,12 @@
+body {
+  font-family: "Archivo", sans-serif;
+}
+
+.card {
+  background-color: #fff;
+  border: solid 4px #777;
+  margin: calc(50vh - 100px) auto 0 auto;
+  padding: .5rem 1rem;
+  text-align: center;
+  width: 300px;
+}
