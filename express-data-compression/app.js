@@ -14,8 +14,7 @@ function compressionFilter(req) {
 }
 
 app.use(compression({
-	filter: compressionFilter,
-	threshold: 0
+	filter: compressionFilter
 }));
 
 app.get('/compressed', (req, res) => {
