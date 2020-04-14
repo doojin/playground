@@ -1,0 +1,8 @@
+{
+  "name": "contact-picker-api",
+  "version": "1.0.0",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
