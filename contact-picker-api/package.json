@@ -2,6 +2,9 @@
   "name": "contact-picker-api",
   "version": "1.0.0",
   "license": "ISC",
+  "scripts": {
+    "start": "live-server src"
+  },
   "dependencies": {
     "live-server": "^1.2.1"
   }
