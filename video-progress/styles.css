@@ -1,8 +1,18 @@
+figure {
+    width: 50%;
+    margin: 0 auto;
+}
+
+video {
+    width: 100%;
+}
+
 progress {
     appearance: none;
     -webkit-appearance: none;
 
     border: none;
+    width: 100%;
 }
 
 progress::-webkit-progress-value {
