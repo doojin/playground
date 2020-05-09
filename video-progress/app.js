@@ -13,7 +13,7 @@ function updateProgress() {
     const progress = currentVideoTime / totalVideoTime;
 
     progressLabelElement.textContent = 
-        `${Math.round(currentVideoTime)}s / ${Math.round(totalVideoTime)}s`;
+        `${currentVideoTime.toFixed(1)}s / ${totalVideoTime.toFixed(2)}s`;
 
     progressElement.value = progress;
 
