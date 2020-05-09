@@ -1,0 +1,14 @@
+progress {
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: none;
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(to left, #8e60db, #9003fc);
+}
+
+progress::-webkit-progress-bar {
+    background: #553787;
+}
