@@ -1,3 +1,7 @@
+* {
+    font-family: "Consolas";
+}
+
 figure {
     width: 50%;
     margin: 0 auto;
@@ -21,4 +25,19 @@ progress::-webkit-progress-value {
 
 progress::-webkit-progress-bar {
     background: #553787;
+}
+
+#progressLabel {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+button {
+    background-color: #e087c7;
+    border: solid 1px #cc39a3;
+    cursor: pointer;
+    height: 2rem;
+    outline: none;
+    width: 100%;
 }
