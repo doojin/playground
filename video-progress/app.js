@@ -16,16 +16,17 @@ function toggleVideo() {
 }
 
 function updateProgress() {
-    const totalVideoTime = videoElement.duration;
-    const currentVideoTime = videoElement.currentTime;
-    const progress = currentVideoTime / totalVideoTime;
+    if (!videoElement.paused) {
+        const totalVideoTime = videoElement.duration;
+        const currentVideoTime = videoElement.currentTime;
+        const progress = currentVideoTime / totalVideoTime;
+    
+        progressElement.value = progress;
+        progressLabelElement.textContent = 
+            `${Math.round(currentVideoTime)}s / ${Math.round(totalVideoTime)}s`;
+    }
 
-    progressElement.value = progress;
-    progressLabelElement.textContent = 
-        `${Math.round(currentVideoTime)}s / ${Math.round(totalVideoTime)}s`;
+    requestAnimationFrame(updateProgress);
 }
 
-videoElement.oncanplay = () => {
-    updateProgress();
-    setInterval(updateProgress, 1000);
-};
+videoElement.oncanplay = updateProgress;
