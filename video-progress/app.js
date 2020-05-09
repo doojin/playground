@@ -3,8 +3,6 @@ const videoElement = document.querySelector('video');
 const progressLabelElement = document.querySelector('#progressLabel');
 const buttonElement = document.querySelector('button');
 
-buttonElement.addEventListener('click', toggleVideo);
-
 function toggleVideo() {
     if (videoElement.paused) {
         buttonElement.textContent = 'Pause';
@@ -18,18 +16,27 @@ function toggleVideo() {
 function updateProgress() {
     const totalVideoTime = videoElement.duration;
     const currentVideoTime = videoElement.currentTime;
+    const progress = currentVideoTime / totalVideoTime;
 
     progressLabelElement.textContent = 
         `${Math.round(currentVideoTime)}s / ${Math.round(totalVideoTime)}s`;
 
-    if (!videoElement.paused) {
-        const progress = currentVideoTime / totalVideoTime;
-        progressElement.value = progress;
-    }
+    progressElement.value = progress;
 
     requestAnimationFrame(updateProgress);
 }
 
-videoElement.oncanplay = () => {
-    updateProgress();
-}
+videoElement.oncanplay = updateProgress;
+
+buttonElement.addEventListener('click', toggleVideo);
+
+progressElement.addEventListener('click', e => {
+    const positionX = e.offsetX;
+    const totalWidth = progressElement.clientWidth;
+    const progress = positionX / totalWidth;
+
+    const totalVideoTime = videoElement.duration;
+    const newTime = totalVideoTime * progress;
+
+    videoElement.currentTime = newTime;
+});
