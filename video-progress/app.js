@@ -4,13 +4,7 @@ const progressLabelElement = document.querySelector('#progressLabel');
 const buttonElement = document.querySelector('button');
 
 function toggleVideo() {
-    if (videoElement.paused) {
-        buttonElement.textContent = 'Pause';
-        videoElement.play();
-    } else {
-        buttonElement.textContent = 'Play';
-        videoElement.pause();
-    }
+    videoElement.paused ? videoElement.play() : videoElement.pause();
 }
 
 function updateProgress() {
@@ -27,6 +21,8 @@ function updateProgress() {
 }
 
 videoElement.oncanplay = updateProgress;
+videoElement.addEventListener('pause', () => buttonElement.textContent = 'Play');
+videoElement.addEventListener('play', () => buttonElement.textContent = 'Pause');
 
 buttonElement.addEventListener('click', toggleVideo);
 
