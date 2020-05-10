@@ -22,6 +22,10 @@ openRequest.addEventListener('success', () => {
     });
 });
 
+openRequest.addEventListener('blocked', () => {
+    logEvent('An unclosed outdated connection detected');
+});
+
 function logEvent(event) {
     const li = document.createElement('li');
     li.textContent = event;
