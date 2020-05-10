@@ -34,14 +34,14 @@ openRequest.addEventListener('success', () => {
 
     const clearRequest = books.clear();
     clearRequest.addEventListener('success', () => logEvent('Books store cleaned'));
-    clearRequest.addEventListener('error', e => logEvent(`Error: ${e.message}`));
+    clearRequest.addEventListener('error', e => logEvent(`Error: ${e.srcElement.error.message}`));
 
     const bookAddRequest = books.add({
         title: 'JavaScript: The Definitive Guide',
         price: 15
     });
     bookAddRequest.addEventListener('success', (e) => logEvent('Book added'));
-    bookAddRequest.addEventListener('error', (e) => logEvent(`Error: ${e.message}`));
+    bookAddRequest.addEventListener('error', (e) => logEvent(`Error: ${e.srcElement.error.message}`));
 });
 
 openRequest.addEventListener('blocked', () => {
