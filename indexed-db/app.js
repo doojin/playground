@@ -71,6 +71,9 @@ openRequest.addEventListener('success', () => {
         e.stopPropagation();
     });
 
+    const deleteRequest = books.delete(1);
+    deleteRequest.addEventListener('success', (event) => logEvent('Book deleted, key: 1'));
+
     // Searching books
     const searchTransaction = db.transaction('books', 'readonly');
     const booksStore = searchTransaction.objectStore('books');
