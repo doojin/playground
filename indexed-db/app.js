@@ -80,7 +80,7 @@ document.querySelector('#id-search-button').addEventListener('click', () => {
     const id = document.querySelector('#id-search').value;
 
     const db = openRequest.result;
-    const transaction = db.transaction('books');
+    const transaction = db.transaction('books', 'readonly');
     const books = transaction.objectStore('books');
 
     const bookRequest = books.get(parseInt(id));
