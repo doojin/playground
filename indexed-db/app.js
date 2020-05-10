@@ -75,3 +75,18 @@ function logEvent(event) {
     li.textContent = event;
     document.querySelector('#events').appendChild(li);
 }
+
+document.querySelector('#id-search-button').addEventListener('click', () => {
+    const id = document.querySelector('#id-search').value;
+
+    const db = openRequest.result;
+    const transaction = db.transaction('books');
+    const books = transaction.objectStore('books');
+
+    const bookRequest = books.get(parseInt(id));
+    bookRequest.addEventListener('success', (e) => {
+        const book = e.target.result;
+        const result = book ? book.title : 'Book not found';
+        document.querySelector('#id-search-result').textContent = result;
+    });
+});
