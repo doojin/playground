@@ -11,6 +11,12 @@ openRequest.addEventListener('error', () => {
 
 openRequest.addEventListener('success', () => {
     const db = openRequest.result;
-    console.log('connection successful');
-    console.log(db);
+
+    // May happen when two tabs opened.
+    // In second tab new version of db.
+    // In first tab an outdated one.
+    db.addEventListener('versionchange', () => {
+        db.close();
+        console.log('page reload is needed');
+    });
 });
