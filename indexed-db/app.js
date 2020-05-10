@@ -71,6 +71,15 @@ openRequest.addEventListener('success', () => {
         e.stopPropagation();
     });
 
+    books.add({ 
+        id: 2,
+        title: 'JavaScript: The Good Parts',
+        price: 19
+    }).addEventListener('error', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
     const deleteRequest = books.delete(1);
     deleteRequest.addEventListener('success', (event) => logEvent('Book deleted, key: 1'));
 
@@ -83,6 +92,18 @@ openRequest.addEventListener('success', () => {
         event.target.result.forEach(book => {
             console.log(book);
         });
+    });
+
+    const cursorRequest = booksStore.openCursor();
+    cursorRequest.addEventListener('success', () => {
+        const cursor = cursorRequest.result;
+        
+        if (cursor) {
+            logEvent(`Book found: ${cursor.key} -> ${cursor.value.title}`);
+            cursor.continue();
+        } else {
+            logEvent('Cursor end reached');
+        }
     });
 });
 
