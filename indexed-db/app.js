@@ -2,6 +2,7 @@ const openRequest = indexedDB.open('store', 1);
 
 openRequest.addEventListener('upgradeneeded', e => {
     const db = openRequest.result;
+
     logEvent('Invoking database upgrade');
     
     if (e.oldVersion < 1) {
@@ -19,6 +20,8 @@ openRequest.addEventListener('error', () => {
 
 openRequest.addEventListener('success', () => {
     const db = openRequest.result;
+    db.addEventListener('error', (e) => logEvent(`Database error: ${e.srcElement.error.message}`));
+
     logEvent('Connection successful');
 
     // May happen when two tabs opened.
@@ -51,13 +54,16 @@ openRequest.addEventListener('success', () => {
         id: 1,
         title: 'You Don\'t Know JS: Scope & Closures',
         price: 26
-    }).addEventListener('error', (e) => e.preventDefault());
+    }).addEventListener('success', (e) => logEvent(`Book added, key: ${e.target.result}`));
 
     books.add({ 
         id: 1,
         title: 'JavaScript: The Good Parts',
         price: 19
-    }).addEventListener('error', (e) => e.preventDefault());
+    }).addEventListener('error', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    });
 });
 
 openRequest.addEventListener('blocked', () => {
