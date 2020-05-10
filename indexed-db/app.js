@@ -28,6 +28,20 @@ openRequest.addEventListener('success', () => {
         db.close();
         logEvent('Version change; page reload is needed');
     });
+
+    const transaction = db.transaction('books', 'readwrite');
+    const books = transaction.objectStore('books');
+
+    const clearRequest = books.clear();
+    clearRequest.addEventListener('success', () => logEvent('Books store cleaned'));
+    clearRequest.addEventListener('error', e => logEvent(`Error: ${e.message}`));
+
+    const bookAddRequest = books.add({
+        title: 'JavaScript: The Definitive Guide',
+        price: 15
+    });
+    bookAddRequest.addEventListener('success', (e) => logEvent('Book added'));
+    bookAddRequest.addEventListener('error', (e) => logEvent(`Error: ${e.message}`));
 });
 
 openRequest.addEventListener('blocked', () => {
