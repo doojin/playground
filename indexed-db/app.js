@@ -1,7 +1,8 @@
-const openRequest = indexedDB.open('store', 3);
+const openRequest = indexedDB.open('store', 5);
 
 openRequest.addEventListener('upgradeneeded', () => {
-    console.log('upgrade needed');
+    const db = openRequest.result;
+    console.log(`upgrade needed, db version: ${db.version}`);
 });
 
 openRequest.addEventListener('error', () => {
