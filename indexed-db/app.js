@@ -1,8 +1,16 @@
 const openRequest = indexedDB.open('store', 1);
 
-openRequest.addEventListener('upgradeneeded', () => {
+openRequest.addEventListener('upgradeneeded', e => {
     const db = openRequest.result;
-    logEvent(`Upgrade needed, db version: ${db.version}`);
+    logEvent('Invoking database upgrade');
+    
+    if (e.oldVersion < 1) {
+        logEvent('Creating books object store');
+        db.createObjectStore('books', { 
+            keyPath: 'id', 
+            autoIncrement: true 
+        });
+    }
 });
 
 openRequest.addEventListener('error', () => {
