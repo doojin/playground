@@ -31,7 +31,7 @@ openRequest.addEventListener('success', () => {
 
     const transaction = db.transaction('books', 'readwrite');
     transaction.addEventListener('complete', (e) => logEvent('Transaction finished'));
-    transaction.addEventListener('error', (e) => logEvent(`Transaction failed: ${e.srcElement.error.message}`));
+    transaction.addEventListener('error', (e) => logEvent(`Transaction error: ${e.srcElement.error.message}`));
     transaction.addEventListener('abort', (e) => logEvent(`Transaction aborted: ${e.srcElement.error.message}`));
 
     const books = transaction.objectStore('books');
@@ -46,6 +46,18 @@ openRequest.addEventListener('success', () => {
     });
     bookAddRequest.addEventListener('success', (e) => logEvent(`Book added, key: ${bookAddRequest.result}`));
     bookAddRequest.addEventListener('error', (e) => logEvent(`Error: ${e.srcElement.error.message}`));
+
+    books.add({ 
+        id: 1,
+        title: 'You Don\'t Know JS: Scope & Closures',
+        price: 26
+    }).addEventListener('error', (e) => e.preventDefault());
+
+    books.add({ 
+        id: 1,
+        title: 'JavaScript: The Good Parts',
+        price: 19
+    }).addEventListener('error', (e) => e.preventDefault());
 });
 
 openRequest.addEventListener('blocked', () => {
