@@ -70,6 +70,17 @@ openRequest.addEventListener('success', () => {
         e.preventDefault();
         e.stopPropagation();
     });
+
+    // Searching books
+    const searchTransaction = db.transaction('books', 'readonly');
+    const booksStore = searchTransaction.objectStore('books');
+    const titleIndex = booksStore.index('title');
+    const titleSearchRequest = titleIndex.getAll(IDBKeyRange.bound('JavaScript', 'JavaScript' + '\uffff'));
+    titleSearchRequest.addEventListener('success', (event) => {
+        event.target.result.forEach(book => {
+            console.log(book);
+        });
+    });
 });
 
 openRequest.addEventListener('blocked', () => {
