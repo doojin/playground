@@ -1,4 +1,4 @@
-const openRequest = indexedDB.open('store', 5);
+const openRequest = indexedDB.open('store', 1);
 
 openRequest.addEventListener('upgradeneeded', () => {
     const db = openRequest.result;
