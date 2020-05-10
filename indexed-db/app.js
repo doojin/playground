@@ -30,6 +30,10 @@ openRequest.addEventListener('success', () => {
     });
 
     const transaction = db.transaction('books', 'readwrite');
+    transaction.addEventListener('complete', (e) => logEvent('Transaction finished'));
+    transaction.addEventListener('error', (e) => logEvent(`Transaction failed: ${e.srcElement.error.message}`));
+    transaction.addEventListener('abort', (e) => logEvent(`Transaction aborted: ${e.srcElement.error.message}`));
+
     const books = transaction.objectStore('books');
 
     const clearRequest = books.clear();
