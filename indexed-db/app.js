@@ -40,7 +40,7 @@ openRequest.addEventListener('success', () => {
         title: 'JavaScript: The Definitive Guide',
         price: 15
     });
-    bookAddRequest.addEventListener('success', (e) => logEvent('Book added'));
+    bookAddRequest.addEventListener('success', (e) => logEvent(`Book added, key: ${bookAddRequest.result}`));
     bookAddRequest.addEventListener('error', (e) => logEvent(`Error: ${e.srcElement.error.message}`));
 });
 
